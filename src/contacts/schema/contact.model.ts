@@ -6,7 +6,7 @@ export type UsersDocument = HydratedDocument<Contact>;
 export class Contact {
     @Prop({ type: Number, required: true })
     phone_number: number
-
+    //
     @Prop({ type: String, required: true, minlength: 3, maxlength: 20 })
     nickname: string
 
