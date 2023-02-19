@@ -5,6 +5,8 @@ import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { UsersModule } from './users/users.module';
+import { ChatsModule } from './chats/chats.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 @Module({
   imports: [
@@ -15,6 +17,9 @@ import { UsersModule } from './users/users.module';
       playground: true,
     }),
     MongooseModule.forRoot('mongodb://jhon:jhon@localhost:27017/whatsapp_clone'),
-    UsersModule],
+    UsersModule,
+    ChatsModule,
+    ContactsModule],
+  providers: [],
 })
 export class AppModule { }

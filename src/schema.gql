@@ -22,12 +22,33 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Contact {
+  """Contact phone number"""
+  phone_number: Float!
+
+  """Contact Nickname"""
+  nickname: String!
+
+  """Create at contact"""
+  create_at: DateTime
+}
+
+type Contacts {
+  """Owner phone number contacts"""
+  owner: Float!
+
+  """List contacts"""
+  contacts: [Contact!]!
+}
+
 type Query {
   users: [Users!]!
+  contactsByOwner(owner: Float!): Contacts!
 }
 
 type Mutation {
   createUser(user: UserInsert!): Users!
+  createContact(contact: InsertContacts!): Contacts!
 }
 
 input UserInsert {
@@ -42,4 +63,18 @@ input UserInsert {
 
   """Phone number"""
   phone_number: Float!
+}
+
+input InsertContacts {
+  """Owner phone number contacts"""
+  owner: Float!
+  contacts: InsertContact!
+}
+
+input InsertContact {
+  """Contact phone number"""
+  phone_number: Float!
+
+  """Contact Nickname"""
+  nickname: String!
 }
