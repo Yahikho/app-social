@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Users {
+  """Nickname user"""
+  nickname: String!
+
+  """State user"""
+  state: String
+
+  """URI img avatar user"""
+  avatar: String
+
+  """Phone number"""
+  phone_number: Float!
+  create_at: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  users: [Users!]!
+}
+
+type Mutation {
+  createUser(user: UserInsert!): Users!
+}
+
+input UserInsert {
+  """Nickname user"""
+  nickname: String!
+
+  """State user"""
+  state: String
+
+  """URI img avatar user"""
+  avatar: String
+
+  """Phone number"""
+  phone_number: Float!
+}
