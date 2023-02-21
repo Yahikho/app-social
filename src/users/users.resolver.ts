@@ -16,18 +16,8 @@ export class UsersResolver {
     }
 
     @Mutation(returns => Users)
-    async createUser(@Args('user', new CreateUserPipe(createUserSchema)) user: InsertUser): Promise<Users> {
+    async createUser(@Args('user', new CreateUserPipe(createUserSchema), PhoneNumberPipe) user: InsertUser): Promise<Users> {
         return await this.usersService.create(user);
     }
-    /*
-     @Mutation(returns => Contacts)
-    async createContact(@Args('contact', new CreateContactsPipe(createContactsSchema), PhoneNumberPipe) contact: InsertContacts): Promise<Contacts> {
-        const contactOwnerIsCreate = await this.contactsService.findByOwner(contact.owner);
-        if (contactOwnerIsCreate)
-            return await this.contactsService.pushContact(contact, contactOwnerIsCreate)
-        else
-            return await this.contactsService.create(contact)
-    }
-    */
 
 }
