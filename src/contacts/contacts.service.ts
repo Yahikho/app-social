@@ -7,7 +7,7 @@ import { InsertContacts } from './dto/insert-contacts'
 @Injectable()
 export class ContactsService {
     constructor(@InjectModel(Contacts.name) private conctacsModel: Model<ContactsDocument>) { }
-
+    
     async findByOwner(owner: number): Promise<Contacts> {
         return await this.conctacsModel.findOne({ owner }).exec();
     }

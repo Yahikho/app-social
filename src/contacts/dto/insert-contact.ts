@@ -1,5 +1,4 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { Contact } from './contact'
 
 @InputType()
 export class InsertContact {

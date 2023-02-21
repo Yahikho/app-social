@@ -1,20 +1,20 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
-import { InsertContacts } from 'src/contacts/dto/insert-contacts';
+import { SearchChats } from '../dto/searh-chats';
 import { ObjectSchema } from 'joi';
 import { GraphQLError } from 'graphql';
 
 @Injectable()
-export class CreateContactsPipe implements PipeTransform {
+export class SearchChatsPipe implements PipeTransform {
     constructor(private schema: ObjectSchema) { }
-    transform(contact: InsertContacts, metadata: ArgumentMetadata) {
-        const { error } = this.schema.validate(contact)
+    transform(chats: SearchChats, metadata: ArgumentMetadata) {
+        const { error } = this.schema.validate(chats);
         if (error) {
             throw new GraphQLError(error.message, {
                 extensions: {
                     info: error.details
                 }
-            });
+            })
         }
-        return contact;
+        return chats;
     }
 }

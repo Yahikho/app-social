@@ -9,6 +9,9 @@ export class Contacts {
     @Prop({ type: Number })
     owner: number
 
+    @Prop({ type: Boolean, default: false })
+    block: boolean
+
     @Prop([Contact])
     contacts: Contact[]
 }

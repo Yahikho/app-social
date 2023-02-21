@@ -16,7 +16,7 @@ export class Users {
     @Prop({ type: Number, unique: true })
     phone_number: number
 
-    @Prop({
+    @Prop({type: Date,
         default: () => {
             const today = new Date();
             return today.setHours(today.getHours() - 5);
