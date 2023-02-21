@@ -4,7 +4,7 @@ export type UsersDocument = HydratedDocument<Users>;
 
 @Schema({ versionKey: false })
 export class Users {
-    @Prop({ type: String, required: true, minlength: 3, maxlength: 20 })
+    @Prop({ type: String })
     nickname: string
 
     @Prop({ type: String })
@@ -13,7 +13,7 @@ export class Users {
     @Prop({ type: String })
     avatar?: string
 
-    @Prop({ type: Number, unique: true, required: true, min: 100000, max: 9999999999 })
+    @Prop({ type: Number, unique: true })
     phone_number: number
 
     @Prop({

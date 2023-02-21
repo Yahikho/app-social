@@ -2,7 +2,9 @@ import { Resolver, Query, Args, Float, Mutation } from '@nestjs/graphql';
 import { ContactsService } from './contacts.service'
 import { Contacts } from './dto/contacts'
 import { InsertContacts } from './dto/insert-contacts';
-import { ContactsPipe } from './contacts.pipe'
+import { createContactsSchema } from './validation/joi-create-contacts.shema'
+import { CreateContactsPipe } from './validation/create-contacts.pipe';
+import { PhoneNumberPipe } from './validation/phone-number.pipe';
 
 @Resolver()
 export class ContactsResolver {
@@ -14,7 +16,7 @@ export class ContactsResolver {
     }
 
     @Mutation(returns => Contacts)
-    async createContact(@Args('contact', ContactsPipe) contact: InsertContacts): Promise<Contacts> {
+    async createContact(@Args('contact', new CreateContactsPipe(createContactsSchema), PhoneNumberPipe) contact: InsertContacts): Promise<Contacts> {
         const contactOwnerIsCreate = await this.contactsService.findByOwner(contact.owner);
         if (contactOwnerIsCreate)
             return await this.contactsService.pushContact(contact, contactOwnerIsCreate)

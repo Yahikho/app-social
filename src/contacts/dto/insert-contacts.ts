@@ -1,6 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql';
 import { InsertContact } from './insert-contact'
-import { MinLength, IsInt } from 'class-validator';
 
 @InputType()
 export class InsertContacts {

@@ -47,11 +47,11 @@ type Query {
 }
 
 type Mutation {
-  createUser(user: UserInsert!): Users!
+  createUser(user: InsertUser!): Users!
   createContact(contact: InsertContacts!): Contacts!
 }
 
-input UserInsert {
+input InsertUser {
   """Nickname user"""
   nickname: String!
 
